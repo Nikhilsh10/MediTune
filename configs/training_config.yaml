@@ -58,6 +58,6 @@ data:
   max_eval_samples: 500
 
 hub:
-  push_to_hub: true
+  push_to_hub: false
   hub_model_id: "nikhilsh10/meditune-mistral-7b"
   hub_strategy: "every_save"

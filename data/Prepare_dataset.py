@@ -24,7 +24,7 @@ from pathlib import Path
 # Allow running as a script from the repo root without installing the package.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.utils import build_instruction_prompt, is_valid_sample
+from src.Utils import build_instruction_prompt, is_valid_sample
 
 
 # ---------------------------------------------------------------------------

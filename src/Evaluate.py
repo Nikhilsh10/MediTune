@@ -26,7 +26,7 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.utils import build_inference_prompt, extract_decision
+from src.Utils import build_inference_prompt, extract_decision
 
 # ---------------------------------------------------------------------------
 # 1. PubMedQA accuracy

@@ -121,13 +121,10 @@ def train(config_path: str = "configs/training_config.yaml"):
         bf16=config.training.bf16,
         group_by_length=config.training.group_by_length,
         packing=config.training.packing,
-        max_seq_length=config.model.max_seq_length,
-        dataset_text_field="text",
         report_to=config.training.report_to if "WANDB_API_KEY" in os.environ else "none",
         push_to_hub=config.hub.push_to_hub,
         hub_model_id=config.hub.hub_model_id,
         hub_strategy=config.hub.hub_strategy,
-        dataset_kwargs={"skip_prepare_dataset": False},
     )
     
     trainer = SFTTrainer(
@@ -136,6 +133,9 @@ def train(config_path: str = "configs/training_config.yaml"):
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
         args=training_args,
+        max_seq_length=config.model.max_seq_length,
+        dataset_text_field="text",
+        dataset_kwargs={"skip_prepare_dataset": False},
     )
     
     print("Starting training...")

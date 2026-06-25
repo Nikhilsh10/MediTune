@@ -83,7 +83,8 @@ class LoRAConfig(BaseModel):
 
 class TrainingConfig(BaseModel):
     output_dir: str
-    num_train_epochs: int
+    num_train_epochs: float
+    max_steps: Optional[int] = -1
     per_device_train_batch_size: int
     gradient_accumulation_steps: int
     gradient_checkpointing: bool

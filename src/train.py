@@ -102,6 +102,7 @@ def train(config_path: str = "configs/training_config.yaml"):
     training_args = SFTConfig(
         output_dir=config.training.output_dir,
         num_train_epochs=config.training.num_train_epochs,
+        max_steps=config.training.max_steps,
         per_device_train_batch_size=config.training.per_device_train_batch_size,
         gradient_accumulation_steps=config.training.gradient_accumulation_steps,
         gradient_checkpointing=config.training.gradient_checkpointing,

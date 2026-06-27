@@ -61,7 +61,7 @@ def assert_label_distribution(records: list[dict], split_name: str) -> None:
     print(f"\n  Label distribution for '{split_name}':")
     for label in ("yes", "no", "maybe"):
         pct = counts.get(label, 0) / total * 100
-        flag = " ⚠️  < 5%" if pct < 5 else ""
+        flag = " < 5%" if pct < 5 else ""
         print(f"    {label:6s}: {counts.get(label, 0):6d}  ({pct:.1f}%){flag}")
 
 
@@ -188,7 +188,7 @@ def prepare(
 
     if len(train_records) < 1000:
         print(
-            "\n⚠️  WARNING: fewer than 1 000 training samples written. "
+            "\nWARNING: fewer than 1 000 training samples written. "
             "Check filtering logic or raise --max-train."
         )
 

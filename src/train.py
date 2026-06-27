@@ -44,7 +44,7 @@ def load_model_and_tokenizer(config: MediTuneConfig):
     model = AutoModelForCausalLM.from_pretrained(
         config.model.base_model_id,
         quantization_config=bnb_config,
-        device_map="auto",
+        device_map={"": 0},
         trust_remote_code=config.model.trust_remote_code,
     )
     model = prepare_model_for_kbit_training(model)

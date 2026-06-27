@@ -120,7 +120,6 @@ def train(config_path: str = "configs/training_config.yaml"):
         metric_for_best_model=config.training.metric_for_best_model,
         fp16=config.training.fp16,
         bf16=config.training.bf16,
-        group_by_length=config.training.group_by_length,
         packing=config.training.packing,
         max_length=config.model.max_seq_length,
         dataset_text_field="text",

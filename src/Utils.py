@@ -45,10 +45,10 @@ def build_instruction_prompt(sample: dict) -> str:
     response_text = f"{decision}. {explanation}" if explanation else decision
 
     return (
-        f"### Instruction:\n{_INSTRUCTION}\n\n"
-        f"### Context:\n{abstract}\n\n"
-        f"### Question:\n{question}\n\n"
-        f"### Response:\n{response_text}"
+        f"<s>[INST] {_INSTRUCTION}\n\n"
+        f"Context:\n{abstract}\n\n"
+        f"Question:\n{question} [/INST] "
+        f"{response_text}</s>"
     )
 
 
@@ -68,16 +68,16 @@ def build_inference_prompt(context: str, question: str) -> str:
     question = question.strip()
 
     return (
-        f"### Instruction:\n{_INSTRUCTION}\n\n"
-        f"### Context:\n{context}\n\n"
-        f"### Question:\n{question}\n\n"
-        f"### Response:\n"
+        f"<s>[INST] {_INSTRUCTION}\n\n"
+        f"Context:\n{context}\n\n"
+        f"Question:\n{question} [/INST]"
     )
 
 
 # ---------------------------------------------------------------------------
 # Output parsing
 # ---------------------------------------------------------------------------
+import re
 
 
 def extract_decision(text: str) -> str | None:
@@ -101,10 +101,10 @@ def extract_decision(text: str) -> str | None:
         if normalised.startswith(label):
             return label
 
-    # Pass 2: first occurrence within first 100 chars
+    # Pass 2: first occurrence within first 100 chars (using regex word boundaries)
     window = normalised[:100]
     for label in VALID_LABELS:
-        if label in window:
+        if re.search(rf"\b{label}\b", window):
             return label
 
     return None

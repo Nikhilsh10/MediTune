@@ -40,7 +40,7 @@ training:
   logging_steps: 25
   save_steps: 200
   eval_steps: 200
-  evaluation_strategy: "steps"
+  eval_strategy: "steps"
   load_best_model_at_end: true
   metric_for_best_model: "eval_loss"
   fp16: false
@@ -54,7 +54,7 @@ data:
   train_config: "pqa_artificial"
   eval_config: "pqa_labeled"
   train_split: "train"
-  eval_split: "validation"
+  eval_split: "train"
   max_train_samples: 50000
   max_eval_samples: 500
 

@@ -97,7 +97,7 @@ class TrainingConfig(BaseModel):
     logging_steps: int
     save_steps: int
     eval_steps: int
-    evaluation_strategy: str
+    eval_strategy: str
     load_best_model_at_end: bool
     metric_for_best_model: str
     fp16: bool

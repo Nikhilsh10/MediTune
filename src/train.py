@@ -135,7 +135,6 @@ def train(config_path: str = "configs/training_config.yaml"):
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
         args=training_args,
-        max_seq_length=config.model.max_seq_length,
     )
     
     print("Starting training...")

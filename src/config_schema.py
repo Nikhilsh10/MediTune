@@ -92,7 +92,7 @@ class TrainingConfig(BaseModel):
     weight_decay: float
     optim: str
     lr_scheduler_type: str
-    warmup_ratio: float
+    warmup_steps: int
     max_grad_norm: float
     logging_steps: int
     save_steps: int

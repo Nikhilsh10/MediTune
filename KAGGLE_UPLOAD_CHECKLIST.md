@@ -129,8 +129,8 @@ import subprocess
 result = subprocess.run([
     sys.executable,
     f"{REPO}/data/prepare_dataset.py",
-    "--max-train", "2000",
-    "--max-eval",  "100",
+    "--max-train", "110000",  # yields ~50k after 56% token-length filter
+    "--max-eval",  "1000",
     "--max-seq-length", "512",
     "--model-id", "mistralai/Mistral-7B-Instruct-v0.3"
 ], capture_output=True, text=True, cwd="/kaggle/working")

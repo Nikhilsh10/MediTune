@@ -1,4 +1,5 @@
 import os
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")  # Force single GPU — TRL 1.7.1 _chunked_ce_forward cross-device fix
 import yaml
 import torch
 import wandb

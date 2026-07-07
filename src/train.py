@@ -121,7 +121,6 @@ def train(config_path: str = "configs/training_config.yaml"):
         fp16=config.training.fp16,
         bf16=config.training.bf16,
         packing=config.training.packing,
-        max_seq_length=config.model.max_seq_length,
         dataset_text_field="text",
         dataset_kwargs={"skip_prepare_dataset": False},
         report_to=config.training.report_to if "WANDB_API_KEY" in os.environ else "none",
@@ -136,6 +135,7 @@ def train(config_path: str = "configs/training_config.yaml"):
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
         args=training_args,
+        max_seq_length=config.model.max_seq_length,
     )
     
     print("Starting training...")
